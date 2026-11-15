@@ -87,7 +87,7 @@ Cada libro candidato recibe una puntuación por sus temas compartidos con libros
 
 ### Conclusión del MVP
 
-La búsqueda, caché offline, sesión por correo, sincronización, colección CRUD y autorización de administrador se verificaron en Android con backend local. En iOS se compiló y abrió la pantalla inicial en iPhone 17 Simulator (iOS 27.2). OAuth real aún requiere los IDs del proyecto; las demás pantallas y flujos iOS necesitan una matriz de comprobación propia.
+La búsqueda, caché offline, sesión por correo, sincronización, colección CRUD y autorización de administrador se verificaron en Android con backend local. En iOS se compiló y comprobó la búsqueda, el detalle de libro, favoritos y autocomprobación en iPhone 17 Simulator (iOS 27.2). OAuth real aún requiere los IDs del proyecto; el resto de flujos iOS necesita una matriz de comprobación propia.
 
 ### Bibliografía (APA)
 
@@ -152,7 +152,7 @@ La autocomprobación local se ejecuta al arrancar cada instalación/ejecución y
 | Admin desde cuenta normal | Pantalla recibe HTTP 403 del servidor y muestra acceso denegado |
 | Docker Compose | Imagen construida, contenedor healthy y `/health` devuelve `status=ok`, `database=ok`; CRUD y elevación admin verificados |
 | Google OAuth real | Aún requiere IDs de OAuth del equipo; el botón queda deshabilitado sin ellos |
-| iOS Simulator | Build Debug y lanzamiento correctos en iPhone 17, iOS 27.2; pantalla inicial visible |
+| iOS Simulator | Build Debug correcto; búsqueda (30 resultados), detalle, favoritos y autocomprobación visibles en iPhone 17, iOS 27.2 |
 
 Los escenarios se ejecutaron en AVD **Pixel_4a, API 37**. Los resultados reportados abajo son los observados en este equipo; todavía no hay una matriz iOS comparable.
 
@@ -184,12 +184,16 @@ En esta Mac `xcode-select -p` aún apunta a Command Line Tools. El build se real
 
 ### Evidencias iOS
 
-La captura corresponde a `edu.ipn.escom.practica5Multiplataforma` ejecutándose en el simulador iPhone 17 con iOS 27.2. OAuth no se probó porque faltan los client IDs reales.
+Las capturas corresponden a `edu.ipn.escom.practica5Multiplataforma` ejecutándose en el simulador iPhone 17 con iOS 27.2. OAuth no se probó porque faltan los client IDs reales.
 
 | Escenario | Captura |
 | --- | --- |
-| Pantalla inicial de búsqueda | ![App de libros abierta en iPhone 17 Simulator](evidence/ios/ios-home.png) |
+| Inicio | ![Búsqueda de libros en iPhone 17 Simulator](evidence/ios/ios-home.png) |
+| Resultados Open Library | ![30 resultados de la búsqueda Hobbit](evidence/ios/ios-search-results.png) |
+| Detalle del libro | ![Detalle de The Hobbit](evidence/ios/ios-book-detail.png) |
+| Favoritos | ![The Hobbit guardado en favoritos](evidence/ios/ios-favorites.png) |
+| Autocomprobación | ![SQLite, almacenamiento seguro, conectividad, Open Library y backend correctos; OAuth pendiente](evidence/ios/ios-diagnostics.png) |
 
 ## English
 
-Flutter app for Android and iOS with Open Library search, local SQLite, per-account favorites and history, an offline queue, a Flask REST API and backend-enforced admin access. Clone and start the local API with `docker compose up -d --build`, then run `flutter pub get` and `flutter run`. Google OAuth is implemented but requires the team's Google Cloud client IDs and platform setup described above. Local data remains usable when the server or Internet is unavailable. The Android flows were verified on Pixel 4a API 37. The iOS debug build launched on iPhone 17 Simulator (iOS 27.2), with its home screen captured; the remaining iOS flows and real Google OAuth still need dedicated validation and project credentials.
+Flutter app for Android and iOS with Open Library search, local SQLite, per-account favorites and history, an offline queue, a Flask REST API and backend-enforced admin access. Clone and start the local API with `docker compose up -d --build`, then run `flutter pub get` and `flutter run`. Google OAuth is implemented but requires the team's Google Cloud client IDs and platform setup described above. Local data remains usable when the server or Internet is unavailable. The Android flows were verified on Pixel 4a API 37. The iOS debug build and search, book detail, favorites and local diagnostics were captured on iPhone 17 Simulator (iOS 27.2); remaining iOS flows and real Google OAuth still need dedicated validation and project credentials.
