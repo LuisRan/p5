@@ -1,0 +1,4 @@
+// Copy to GoogleAuth.xcconfig (ignored by Git) and replace with Google Cloud client IDs.
+GOOGLE_IOS_CLIENT_ID = YOUR_IOS_CLIENT_ID.apps.googleusercontent.com
+GOOGLE_WEB_CLIENT_ID = YOUR_WEB_CLIENT_ID.apps.googleusercontent.com
+GOOGLE_REVERSED_CLIENT_ID = com.googleusercontent.apps.YOUR_REVERSED_IOS_CLIENT_ID

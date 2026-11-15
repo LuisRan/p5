@@ -1,4 +1,7 @@
 # Miscellaneous
+.env
+backend/*.db
+ios/Flutter/GoogleAuth.xcconfig
 *.class
 *.log
 *.pyc

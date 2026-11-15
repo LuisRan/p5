@@ -1,0 +1,20 @@
+services:
+  api:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-local-development-secret-change-before-deploying}
+      GOOGLE_CLIENT_ID: ${GOOGLE_WEB_CLIENT_ID:-}
+      DATABASE_PATH: /data/practica5.db
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - practica5_data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  practica5_data:
